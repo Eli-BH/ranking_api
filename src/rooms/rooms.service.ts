@@ -18,7 +18,7 @@ export class RoomsService {
     room.room_name = createRoomDto.room_name; // Set the room name
     room.created_by = createRoomDto.created_by; // user id
     room.created_at = new Date(); // current date
-
+    room.updated_at = new Date(); // current date
     return this.roomRepository.save(room); // Save the room
   }
 
@@ -49,6 +49,8 @@ export class RoomsService {
     if (!room) {
       throw new NotFoundException(`Room #${id} not found`);
     }
+    room.updated_at = new Date(); // current date
+    await this.roomRepository.save(room); // Save the room
 
     return this.roomRepository
       .createQueryBuilder()
