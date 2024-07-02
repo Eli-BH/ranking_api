@@ -14,7 +14,7 @@ export class Ranking {
   id: number;
 
   @Column({ type: 'varchar', length: 30, unique: true })
-  room_name: string; // Room name
+  title: string; // Room name
 
   @ManyToOne(() => Room, (room) => room.id) // Many rankings can be created by one room
   room_id: number; // Room id

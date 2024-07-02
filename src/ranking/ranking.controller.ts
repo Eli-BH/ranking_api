@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { RankingService } from './ranking.service';
 import { CreateRankingDto } from './dto/create-ranking.dto';
 import { UpdateRankingDto } from './dto/update-ranking.dto';
@@ -12,14 +20,9 @@ export class RankingController {
     return this.rankingService.create(createRankingDto);
   }
 
-  @Get()
-  findAll() {
-    return this.rankingService.findAll();
-  }
-
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.rankingService.findOne(+id);
+    return this.rankingService.findAllRoomRankings(+id);
   }
 
   @Patch(':id')
